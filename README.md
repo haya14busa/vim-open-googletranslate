@@ -12,7 +12,7 @@ might want to use electron-open-url](https://github.com/rhysd/electron-open-url)
 to reuse the same opened window.
 
 ```vim
-let g:opengoogletranslate#openbrowsercmd = 'electron-open'
+let g:opengoogletranslate#openbrowsercmd = 'electron-open --without-focus'
 ```
 
 ![with electron-open-url](https://raw.githubusercontent.com/haya14busa/i/7fbb23a9570f8d0699e05d27e3375552d6505e6d/vim-open-googletranslate/with-electron-open-url.gif)
