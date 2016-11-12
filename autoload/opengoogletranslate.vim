@@ -2,6 +2,9 @@ let s:URI = vital#opengoogletranslate#import('Web.URI')
 
 let g:opengoogletranslate#default_lang = get(g:, 'opengoogletranslate#default_lang', '')
 
+" opengoogletranslate#open() opens Google Translate page.
+"
+" TODO: support removing comment prefix in given input?
 function! opengoogletranslate#open(...) abort
   let url = call('opengoogletranslate#url', a:000)
   try
@@ -26,7 +29,7 @@ function! opengoogletranslate#url(input, target_lang, from_lang) abort
 endfunction
 
 " s:gtl_url() returns URL of Google Translate. from_lang arg can be empty and
-" converted to 'auto'.
+" will be converted to 'auto'.
 "
 " https://translate.google.com/#auto/{lang}/{input}
 " https://translate.google.com/#en/ja/input
