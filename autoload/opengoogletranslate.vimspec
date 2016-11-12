@@ -1,0 +1,83 @@
+Describe opengoogletranslate
+  Before all
+    let file = g:root . '/autoload/opengoogletranslate.vim'
+    let S = vital#vital#import('Vim.ScriptLocal').sfuncs(file)
+    exe vital#vital#import('Vim.PowerAssert').define('PowerAssert')
+  End
+
+  Describe opengoogletranslate#url
+    It ok
+      let tests = [
+      \   {
+      \     'from': 'en',
+      \     'to': 'ja',
+      \     'input': 'input',
+      \     'want': 'https://translate.google.com/#en/ja/input',
+      \   },
+      \   {
+      \     'from': '',
+      \     'to': 'ja',
+      \     'input': 'input',
+      \     'want': 'https://translate.google.com/#auto/ja/input',
+      \   },
+      \   {
+      \     'from': '',
+      \     'to': '',
+      \     'input': 'input',
+      \     'want': printf('https://translate.google.com/#auto/%s/input', S.infer_target_lang()),
+      \   },
+      \   {
+      \     'from': 'en',
+      \     'to': 'ja',
+      \     'input': "in put\n2nd",
+      \     'want': 'https://translate.google.com/#en/ja/in%20put%0A2nd',
+      \   },
+      \ ]
+      for tt in tests
+        let [from, to, input] = [tt.from, tt.to, tt.input]
+        PowerAssert opengoogletranslate#url(input, to, from) ==# tt.want
+      endfor
+    End
+  End
+
+
+  Describe s:gtl_url
+    It ok
+      let tests = [
+      \   {
+      \     'from': 'en',
+      \     'to': 'ja',
+      \     'input': 'input',
+      \     'want': 'https://translate.google.com/#en/ja/input',
+      \   },
+      \   {
+      \     'from': '',
+      \     'to': 'ja',
+      \     'input': 'input',
+      \     'want': 'https://translate.google.com/#auto/ja/input',
+      \   },
+      \ ]
+      let l:S_gtl_url = S.gtl_url
+      for tt in tests
+        let [from, to, input] = [tt.from, tt.to, tt.input]
+        PowerAssert S_gtl_url(input, to, from) ==# tt.want
+      endfor
+    End
+  End
+
+  Describe s:_infer_target_lang
+    It ok
+      let tests = [
+      \   {'in': 'C', 'want': 'en'},
+      \   {'in': 'x', 'want': 'en'},
+      \   {'in': 'en_US.utf8', 'want': 'en'},
+      \   {'in': 'ja_JP.UTF-8', 'want': 'ja'},
+      \ ]
+      let l:S_infer_target_lang = S._infer_target_lang
+      for tt in tests
+        let [in, want] = [tt.in, tt.want]
+        PowerAssert l:S_infer_target_lang(in) ==# want
+      endfor
+    End
+  End
+End
