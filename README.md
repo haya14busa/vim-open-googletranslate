@@ -16,3 +16,6 @@ let g:opengoogletranslate#openbrowsercmd = 'electron-open'
 ```
 
 ![with electron-open-url](https://raw.githubusercontent.com/haya14busa/i/7fbb23a9570f8d0699e05d27e3375552d6505e6d/vim-open-googletranslate/with-electron-open-url.gif)
+
+If you were looking for more streamlined Google Translation integration with Vim,
+see https://github.com/haya14busa/vim-gtrans which uses Google Translation API internally.
