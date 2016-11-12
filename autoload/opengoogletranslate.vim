@@ -1,5 +1,14 @@
 let s:URI = vital#opengoogletranslate#import('Web.URI')
 
+function! opengoogletranslate#open(...) abort
+  let url = call('opengoogletranslate#url', a:000)
+  try
+    call openbrowser#open(url)
+  catch /^Vim\%((\a\+)\)\=:E117/
+    call s:throw('open-broser.vim not found. Please install https://github.com/tyru/open-browser.vim')
+  endtry
+endfunction
+
 " opengoogletranslate#url() returns URL of Google Translate with given input.
 " target_lang and from_lang args can be empty string.
 function! opengoogletranslate#url(input, target_lang, from_lang) abort
@@ -33,3 +42,6 @@ function! s:_infer_target_lang(lang) abort
   endif
 endfunction
 
+function! s:throw(msg) abort
+  throw printf('vim-open-googletranslate: %s', a:msg)
+endfunction
