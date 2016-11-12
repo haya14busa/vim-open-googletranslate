@@ -1,5 +1,7 @@
 let s:URI = vital#opengoogletranslate#import('Web.URI')
 
+let g:opengoogletranslate#default_lang = get(g:, 'opengoogletranslate#default_lang', '')
+
 function! opengoogletranslate#open(...) abort
   let url = call('opengoogletranslate#url', a:000)
   try
@@ -9,15 +11,22 @@ function! opengoogletranslate#open(...) abort
   endtry
 endfunction
 
-" opengoogletranslate#url() returns URL of Google Translate with given input.
+" opengoogletranslate#url() returns URL of Google Translate.
 " target_lang and from_lang args can be empty string.
 function! opengoogletranslate#url(input, target_lang, from_lang) abort
-  let to = a:target_lang ==# '' ? s:infer_target_lang() : a:target_lang
+  let to = a:target_lang
+  if to ==# ''
+    if g:opengoogletranslate#default_lang !=# ''
+      let to = g:opengoogletranslate#default_lang
+    else
+      let to = s:infer_target_lang()
+    endif
+  endif
   return s:gtl_url(a:input, to, a:from_lang)
 endfunction
 
-" s:gtl_url() returns URL of Google Translate with given input. from_lang arg
-" can be empty and converted to 'auto'.
+" s:gtl_url() returns URL of Google Translate. from_lang arg can be empty and
+" converted to 'auto'.
 "
 " https://translate.google.com/#auto/{lang}/{input}
 " https://translate.google.com/#en/ja/input
