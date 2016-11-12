@@ -1,0 +1,87 @@
+*open-googletranslate.txt*	Open Google Translate
+
+Author  : haya14busa <hayabusa1419@gmail.com>
+Version : 0.9.0
+License : MIT license {{{
+
+  Copyright (c) 2016 haya14busa
+
+  Permission is hereby granted, free of charge, to any person obtaining
+  a copy of this software and associated documentation files (the
+  "Software"), to deal in the Software without restriction, including
+  without limitation the rights to use, copy, modify, merge, publish,
+  distribute, sublicense, and/or sell copies of the Software, and to
+  permit persons to whom the Software is furnished to do so, subject to
+  the following conditions:
+  The above copyright notice and this permission notice shall be
+  included in all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+  CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+}}}
+
+==============================================================================
+CONTENTS				*open-googletranslate-contents*
+
+INTRODUCTION		|open-googletranslate-introduction|
+INTERFACE		|open-googletranslate-interface|
+	COMMANDS		|open-googletranslate-commands|
+	KEY MAPPINGS		|open-googletranslate-key-mappings|
+OPTIONS			|open-googletranslate-options|
+CHANGELOG		|open-googletranslate-changelog|
+
+==============================================================================
+INTRODUCTION				*open-googletranslate-introduction*
+
+*vim-open-googletranslate* (*open-googletranslate.vim* ) provides utilities to
+open Google Translate (https://translate.google.com/).
+
+Requirements:
+- |openbrowser| 0.1.1 or later
+  https://github.com/tyru/open-browser.vim
+- [optional] |operator-user| 0.1.0 or later
+  https://github.com/kana/vim-operator-user
+
+Latest version:
+https://github.com/haya14busa/vim-open-googletranslate
+
+==============================================================================
+INTERFACE				*open-googletranslate-interface*
+------------------------------------------------------------------------------
+COMMANDS				*open-googletranslate-commands*
+
+						*:OpenGoogleTranslate*
+:[range]OpenGoogleTranslate [--help] [--to=TO] [--from=FROM] [input text]
+	Open GoogleTranslate with input text. You can specify input test
+	either by optional arguments or visual selection. Otherwise, a whole
+	buffer text will be uses as input text.
+
+	You can specify target language by --to and from language by --from.
+
+------------------------------------------------------------------------------
+KEY MAPPINGS				*open-googletranslate-key-mappings*
+
+<Plug>(operator-open-googletranslate){motion}	*<Plug>(operator-open-googletranslate)*
+	Open GoogleTranslate with text that {motion} moves over.
+
+==============================================================================
+OPTIONS					*open-googletranslate-options*
+
+g:opengoogletranslate#default_lang	*g:opengoogletranslate#default_lang*
+	Default target language. The format should be two lowercase letters
+	(e.g. en, ja, etc...). Default is empty and inferred by |v:lang|.
+
+==============================================================================
+CHANGELOG				 *open-googletranslate-changelog*
+
+0.9.0	2016-11-12
+  - Init.
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl:noet:fen:fdl=0:fdm=marker:
