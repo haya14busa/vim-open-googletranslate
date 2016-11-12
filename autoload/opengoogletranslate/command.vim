@@ -39,7 +39,7 @@ function! opengoogletranslate#command#command(...) abort
   endif
   let to = get(options, 'to', '')
   let from = get(options, 'from', '')
-  let input = join(options.__args__, ' ')
+  let input = join(options.__unknown__, ' ')
   if input ==# ''
     let [start, end] = [options.__range__[0], options.__range__[1]]
     let input = join(getline(start, end), "\n")
