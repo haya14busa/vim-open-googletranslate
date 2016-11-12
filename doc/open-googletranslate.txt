@@ -77,6 +77,15 @@ g:opengoogletranslate#default_lang	*g:opengoogletranslate#default_lang*
 	Default target language. The format should be two lowercase letters
 	(e.g. en, ja, etc...). Default is empty and inferred by |v:lang|.
 
+g:opengoogletranslate#openbrowsercmd	*g:opengoogletranslate#openbrowsercmd*
+	Browser command to open URL. Default is empty and it open your default
+	browser.
+
+	Example:
+	  You can use https://github.com/rhysd/electron-open-url to open
+	  Google Translate in same window instead of opening a lot of tabs.
+
+
 ==============================================================================
 CHANGELOG				 *open-googletranslate-changelog*
 

@@ -1,12 +1,17 @@
 let s:URI = vital#opengoogletranslate#import('Web.URI')
 
 let g:opengoogletranslate#default_lang = get(g:, 'opengoogletranslate#default_lang', '')
+let g:opengoogletranslate#openbrowsercmd = get(g:, 'opengoogletranslate#openbrowsercmd', '')
 
 " opengoogletranslate#open() opens Google Translate page.
 "
 " TODO: support removing comment prefix in given input?
 function! opengoogletranslate#open(...) abort
   let url = call('opengoogletranslate#url', a:000)
+  if executable(g:opengoogletranslate#openbrowsercmd) ==# 1
+    call job_start([g:opengoogletranslate#openbrowsercmd, url])
+    return
+  endif
   try
     call openbrowser#open(url)
   catch /^Vim\%((\a\+)\)\=:E117/
