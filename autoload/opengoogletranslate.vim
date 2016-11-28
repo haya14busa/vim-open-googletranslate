@@ -8,7 +8,7 @@ let g:opengoogletranslate#openbrowsercmd = get(g:, 'opengoogletranslate#openbrow
 " TODO: support removing comment prefix in given input?
 function! opengoogletranslate#open(...) abort
   let url = call('opengoogletranslate#url', a:000)
-  let [cmd; args] = split(g:opengoogletranslate#openbrowsercmd, ' ')
+  let [cmd; args] = split(g:opengoogletranslate#openbrowsercmd, ' ', 1)
   if executable(cmd) ==# 1
     call job_start([cmd] + args + [url])
     return
