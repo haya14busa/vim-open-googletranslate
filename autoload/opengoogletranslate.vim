@@ -10,7 +10,11 @@ function! opengoogletranslate#open(...) abort
   let url = call('opengoogletranslate#url', a:000)
   let [cmd; args] = split(g:opengoogletranslate#openbrowsercmd, ' ', 1)
   if executable(cmd) ==# 1
-    call job_start([cmd] + args + [url])
+    if !has('nvim')
+      call job_start([cmd] + args + [url])
+    else
+      silent! call system([cmd] + args + [url])
+    endif
     return
   endif
   try
