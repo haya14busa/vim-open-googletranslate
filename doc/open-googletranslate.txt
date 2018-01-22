@@ -73,7 +73,7 @@ KEY MAPPINGS				*open-googletranslate-key-mappings*
 ==============================================================================
 OPTIONS					*open-googletranslate-options*
 
-g:opengoogletranslate#default_lang	*g:opengoogletranslate#default_lang*
+g:opengoogletranslate#default_lang	|g:opengoogletranslate#default_lang|
 	Default target language. The format should be two lowercase letters
 	(e.g. en, ja, etc...). Default is empty and inferred by |v:lang|.
 
